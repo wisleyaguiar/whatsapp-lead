@@ -95,6 +95,20 @@
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
 - **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
 
+### Quality Requirements
+
+- **QR-001**: System MUST define which values are configurable without changing core
+  logic, including colors, phone number, webhook URL, GTM event names and public
+  selectors.
+- **QR-002**: System MUST define stable Tray/Twig data contracts for product context and
+  MUST NOT require scraping visible theme markup.
+- **QR-003**: System MUST specify required validation for phone mask, LGPD consent,
+  honeypot behavior, payload shape, dataLayer events and WhatsApp message generation.
+- **QR-004**: System MUST specify the webhook failure and timeout behavior that still
+  allows WhatsApp redirection.
+- **QR-005**: System MUST define measurable UX and performance outcomes for desktop and
+  mobile use.
+
 ### Key Entities *(include if feature involves data)*
 
 - **[Entity 1]**: [What it represents, key attributes without implementation]

@@ -31,7 +31,18 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- **Codigo modular e configuravel**: Document shared modules/functions for context
+  capture, validation, webhook, GTM and WhatsApp redirect. Confirm configurable values
+  are centralized.
+- **Integracao Tray/Twig estavel**: Specify the data-* attributes or injected JSON
+  contracts used for product context. Scraping visual markup is not allowed.
+- **Testes nos caminhos criticos**: Define unit tests for pure logic and integration or
+  documented manual checks for widget open/close, LGPD consent, honeypot, webhook success,
+  webhook failure fallback, dataLayer events and final WhatsApp message.
+- **Experiencia consistente e consentimento claro**: Confirm desktop/mobile behavior,
+  validation states, required LGPD consent, accessible contrast and a single final action.
+- **Performance e resiliencia comercial**: Define script loading constraints, async
+  webhook behavior, timeout/fallback policy and safe behavior when dataLayer is absent.
 
 ## Project Structure
 
