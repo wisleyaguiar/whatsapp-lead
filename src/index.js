@@ -10,7 +10,7 @@ export function initWhatsAppLeadWidget(options = {}, win = window) {
 }
 
 if (typeof window !== 'undefined') {
-  window.WhatsAppTrayLeadWidget = {
+  window.WhatsAppLeadWidget = {
     init: (options = {}) => initWhatsAppLeadWidget(options, window)
   };
 }

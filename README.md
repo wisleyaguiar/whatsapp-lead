@@ -16,8 +16,8 @@ A maneira mais fácil de usar o widget é carregar os arquivos diretamente da CD
 <!-- 3. Inicialização -->
 <script>
   window.addEventListener('DOMContentLoaded', () => {
-    if (window.WhatsAppTrayLeadWidget) {
-      window.WhatsAppTrayLeadWidget.init({
+    if (window.WhatsAppLeadWidget) {
+      window.WhatsAppLeadWidget.init({
         phoneNumber: '5511999999999',
         webhookUrl: 'https://seu-webhook.com/leads',
         brandColor: '#25D366',

@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.js',
-      name: 'WhatsAppTrayLeadWidget',
+      name: 'WhatsAppLeadWidget',
       formats: ['iife'],
       fileName: () => 'whatsapp-widget.js'
     },
