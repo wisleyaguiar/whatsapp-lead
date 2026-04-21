@@ -22,7 +22,7 @@ export async function postLead(webhookUrl, payload, options = {}) {
   try {
     const response = await fetchImpl(webhookUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' }, // text/plain evita o preflight OPTIONS em muitos casos
       body: JSON.stringify(payload),
       signal: controller.signal
     });
