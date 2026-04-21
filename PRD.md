@@ -22,12 +22,16 @@ Desenvolver um script modular (JS/CSS/HTML) para a plataforma Tray que atue como
 3. **Privacidade:** Checkbox obrigatório de aceite da LGPD.
 4. **Finalização:** Botão "Enviar e Iniciar Conversa".
 
-## 3. Requisitos Técnicos e Integrações
+### A. Infraestrutura e Hospedagem
+- **Repositório:** GitHub (`wisleyaguiar/whatsapp-lead`).
+- **Deploy:** Cloudflare Pages com integração contínua (CI/CD).
+- **CDN:** Distribuição global via borda Cloudflare para latência mínima.
 
-### A. Integração com Twig (Tray)
+### B. Integração com Twig (Tray)
 - O script deve ser capaz de ler objetos JSON injetados no HTML ou atributos `data-` para extrair informações do servidor sem depender de raspagem de dados (scraping) instável.
+- **Snippet Recomendado:** Botão com atributos `data-product-name` e `data-product-id`.
 
-### B. Disparo de Webhook (Automação)
+### C. Disparo de Webhook (Automação)
 - **Momento:** Logo após a validação do formulário e antes do redirecionamento.
 - **Método:** Requisição `POST` (JSON) para a URL do Webhook.
 - **Payload esperado:**
@@ -42,12 +46,12 @@ Desenvolver um script modular (JS/CSS/HTML) para a plataforma Tray que atue como
   }
   ```
 
-### C. Mensuração via GTM (Google Tag Manager)
+### D. Mensuração via GTM (Google Tag Manager)
 - O script deve disparar eventos para o `dataLayer`:
   - `wpp_qualificacao_inicio`: Quando o widget é aberto.
   - `wpp_qualificacao_concluida`: No momento do sucesso do Webhook/Redirecionamento.
 
-### D. Segurança e Anti-Bot
+### E. Segurança e Anti-Bot
 - **Honeypot:** Inclusão de um campo oculto via CSS. Se preenchido (por robôs), o script aborta o envio do Webhook e o redirecionamento.
 
 ## 4. UI/UX e Estilo

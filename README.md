@@ -1,28 +1,28 @@
 # WhatsApp Lead Widget
 
-Widget embutivel para qualificar visitantes da Tray antes de abrir o WhatsApp. Ele
-captura nome, telefone, assunto ou produto de interesse, aceite LGPD, origem de trafego,
-evento GTM e payload de lead para webhook externo.
+Widget embutível para qualificar visitantes de e-commerces (como a plataforma Tray) antes de abrir o WhatsApp. Ele captura nome, telefone, assunto ou produto de interesse, aceite LGPD, origem de tráfego, evento GTM e envia os dados para um webhook externo.
 
-## Instalar no tema Tray
+## Instalação Rápida (CDN)
 
-1. Gere o bundle:
-
-```bash
-npm install
-npm run build
-```
-
-2. Publique os arquivos de `dist/` no ambiente de assets do tema.
-3. Inclua o script final no rodape do tema.
-4. Inicialize o widget com as configuracoes da loja:
+A maneira mais fácil de usar o widget é carregar os arquivos diretamente da CDN do **Cloudflare Pages**:
 
 ```html
+<!-- 1. Estilos do Widget -->
+<link rel="stylesheet" href="https://whatsapp-lead.pages.dev/whatsapp-widget.css">
+
+<!-- 2. Script do Widget -->
+<script src="https://whatsapp-lead.pages.dev/whatsapp-widget.js"></script>
+
+<!-- 3. Inicialização -->
 <script>
-  window.WhatsAppTrayLeadWidget.init({
-    phoneNumber: '5511999999999',
-    webhookUrl: 'https://exemplo.com/webhook',
-    brandColor: '#25D366'
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.WhatsAppTrayLeadWidget) {
+      window.WhatsAppTrayLeadWidget.init({
+        phoneNumber: '5511999999999', // Seu número com DDD
+        webhookUrl: 'https://seu-webhook.com/leads',
+        brandColor: '#25D366'
+      });
+    }
   });
 </script>
 ```
@@ -54,11 +54,19 @@ global com assunto manual. Ele nao tenta ler texto visual da pagina.
 - `completeEventName`: nome do evento de conclusao no dataLayer.
 - `productTriggerSelector`: seletor dos botoes/snippets de produto.
 
-## Validacao
+## Desenvolvimento e Deploy
 
-```bash
-npm run lint
-npm run test:unit
-npm run test:integration
-npm run build
-```
+O projeto utiliza **Vite 6** e está configurado para deploy contínuo no **Cloudflare Pages**.
+
+### Fluxo de Trabalho
+1. Faça as alterações no código em `src/`.
+2. Teste localmente com `npm run dev`.
+3. Garanta que os testes passem: `npm test`.
+4. Envie para o GitHub: `git push origin main`.
+5. O Cloudflare Pages detectará o push e atualizará o widget automaticamente em segundos.
+
+### Comandos Disponíveis
+- `npm run dev`: Servidor de desenvolvimento.
+- `npm run build`: Gera o bundle manualmente em `dist/`.
+- `npm test`: Executa todos os testes (Unit + Integration).
+- `npm run lint`: Verifica o estilo do código.

@@ -1,8 +1,9 @@
-# Feature Specification: Widget de Qualificacao de Leads WhatsApp Tray
+# Feature Specification: Widget de Qualificacao de Leads WhatsApp
 
-**Feature Branch**: `001-whatsapp-lead-widget`  
+**Feature Branch**: `main`  
 **Created**: 2026-04-20  
-**Status**: Draft  
+**Last Updated**: 2026-04-21 (Vite 6 / Cloudflare Pages)
+**Status**: Implemented  
 **Input**: User description: "Baseado no arquivo PRD.md crie as especificações do produto, plano de implementação e tarefas para o widget de qualificação de leads e automação WhatsApp na Tray"
 
 ## User Scenarios & Testing *(mandatory)*
@@ -182,6 +183,10 @@ redireciona mesmo com falha tratada.
   sem impedir leitura dos campos ou acesso ao botao final.
 - **SC-007**: A abertura da janela apresenta transicao visual perceptivel em menos de
   500ms para o visitante.
+- **SC-008**: O deploy e realizado automaticamente no Cloudflare Pages em menos de 2
+  minutos apos o push para a branch `main`.
+- **SC-009**: O widget e servido via HTTPS com compressao Gzip/Brotli ativa pela borda
+  da CDN.
 
 ## Assumptions
 

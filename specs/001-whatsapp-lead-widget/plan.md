@@ -1,26 +1,24 @@
-# Implementation Plan: Widget de Qualificacao de Leads WhatsApp Tray
+# Implementation Plan: Widget de Qualificacao de Leads WhatsApp
 
-**Branch**: `001-whatsapp-lead-widget` | **Date**: 2026-04-20 | **Spec**: [spec.md](./spec.md)
-**Input**: Feature specification from `/specs/001-whatsapp-lead-widget/spec.md`
+**Branch**: `main` | **Date**: 2026-04-20 | **Spec**: [spec.md](./spec.md)
+**Status**: Implemented & Deployed
 
 ## Summary
 
-Implementar um widget embutivel para lojas Tray que qualifica visitantes antes do
-WhatsApp. A solucao tera um botao global, um snippet de produto, formulario com nome,
-telefone, assunto/produto e aceite LGPD, registro externo do lead, eventos de
-mensuracao e fallback comercial para abrir WhatsApp mesmo se o registro externo falhar.
+Implementar um widget embutivel para e-commerces que qualifica visitantes antes do
+WhatsApp. A solucao utiliza **Vite 6** para build e **Cloudflare Pages** para hospedagem
+global via CDN. O fluxo inclui captura de leads, registro via webhook e fallback
+comercial garantido.
 
 ## Technical Context
 
 **Language/Version**: JavaScript ES2020, HTML5, CSS3  
-**Primary Dependencies**: Nenhuma dependencia de runtime; ferramentas de desenvolvimento
-propostas: Vite para empacotamento simples, Vitest para unidade e Playwright para fluxo
-DOM em navegador  
-**Storage**: Sem armazenamento local persistente; lead enviado para webhook externo  
-**Testing**: Vitest para funcoes puras; Playwright para abertura/fechamento, validacao,
-honeypot, eventos e fallback de webhook  
-**Target Platform**: Lojas Tray renderizadas em navegadores desktop/mobile modernos  
-**Project Type**: Script frontend embutivel com snippet HTML de produto  
+**Primary Dependencies**: Vite 6, @cloudflare/vite-plugin, Wrangler (para deploy)
+**Deployment**: Cloudflare Pages (CI/CD via GitHub Push)
+**CDN URL**: `https://whatsapp-lead.pages.dev/`
+**Testing**: Vitest 2.0+ para unidade; Playwright para navegadores
+**Target Platform**: Navegadores desktop/mobile modernos  
+**Project Type**: Script frontend distribuido via CDN
 **Performance Goals**: Widget abre visualmente em menos de 500ms apos clique; formulario
 valido redireciona para WhatsApp em ate 2s quando o webhook responde, ou ate 3s com
 timeout tratado  
@@ -82,6 +80,8 @@ src/
 └── ui/
     ├── widget.js
     └── template.js
+wrangler.jsonc  <-- Cloudflare Config
+package.json    <-- Vite 6 Config
 
 tests/
 ├── unit/
