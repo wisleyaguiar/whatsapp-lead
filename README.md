@@ -18,9 +18,10 @@ A maneira mais fácil de usar o widget é carregar os arquivos diretamente da CD
   window.addEventListener('DOMContentLoaded', () => {
     if (window.WhatsAppTrayLeadWidget) {
       window.WhatsAppTrayLeadWidget.init({
-        phoneNumber: '5511999999999', // Seu número com DDD
+        phoneNumber: '5511999999999',
         webhookUrl: 'https://seu-webhook.com/leads',
-        brandColor: '#25D366'
+        brandColor: '#25D366',
+        subjects: ['Dúvida técnica', 'Pedidos', 'Trocas', 'Outros']
       });
     }
   });
@@ -46,8 +47,9 @@ global com assunto manual. Ele nao tenta ler texto visual da pagina.
 
 ## Configuracoes
 
-- `phoneNumber`: numero de destino do WhatsApp com DDI.
+- `phoneNumber`: número de destino do WhatsApp com DDI.
 - `webhookUrl`: destino HTTP para registrar o lead.
+- `subjects`: (Array) Lista de opções para o campo de assunto. Padrão: `['Dúvida técnica', 'Pedidos', 'Cadastro', 'Outros']`.
 - `webhookTimeoutMs`: limite para aguardar o registro antes do fallback.
 - `brandColor`: cor principal do widget.
 - `openEventName`: nome do evento de abertura no dataLayer.

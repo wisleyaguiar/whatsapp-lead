@@ -29,8 +29,8 @@
 .wpp-lead-submit:focus-visible,
 .wpp-lead-form input:focus-visible,
 .wpp-lead-form select:focus-visible {
-  outline: 3px solid #0b5fff;
-  outline-offset: 2px;
+  outline: none;
+  border-color: var(--wpp-lead-color);
 }
 
 .wpp-lead-panel {
@@ -92,6 +92,12 @@
   margin-bottom: 4px;
 }
 
+.wpp-lead-header-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .wpp-lead-header p,
 .wpp-lead-product-question {
   font-size: 14px;
@@ -119,7 +125,7 @@
   color: #17212b;
   font: inherit;
   min-height: 0;
-  padding: 7px 10px;
+  padding: 0 10px;
 }
 
 .wpp-lead-form input:not([type="checkbox"]),

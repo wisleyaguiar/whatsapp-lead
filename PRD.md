@@ -17,10 +17,14 @@ Desenvolver um script modular (JS/CSS/HTML) para a plataforma Tray que atue como
 
 ### C. Fluxo de Qualificação (Interface de Chat)
 1. **Identificação:** Coleta de Nome Completo e WhatsApp (com máscara de telefone).
-2. **Contextualização:** - Se na página de produto: Pergunta se a dúvida é sobre o produto X.
-   - Se global: Menu suspenso com opções (Dúvida técnica, Pedidos, Cadastro).
-3. **Privacidade:** Checkbox obrigatório de aceite da LGPD.
-4. **Finalização:** Botão "Enviar e Iniciar Conversa".
+2. **Contextualização:** 
+   - Se na página de produto: Apresenta balão de contexto sobre o produto específico.
+   - Se global: Menu suspenso com opções de assunto.
+3. **Customização de Assuntos:** Permite definir a lista de opções do seletor de assunto via configuração inicial.
+4. **Privacidade:** Checkbox obrigatório de aceite da LGPD.
+5. **Finalização:** Botão "Enviar e Iniciar Conversa" (com ícones animados).
+
+## 3. Requisitos Técnicos e Integrações
 
 ### A. Infraestrutura e Hospedagem
 - **Repositório:** GitHub (`wisleyaguiar/whatsapp-lead`).
@@ -64,6 +68,6 @@ A mensagem final gerada deve ser amigável e informativa:
 > "Olá! Me chamo **[Nome]** e gostaria de atendimento sobre **[Produto/Assunto]**. Podem me ajudar? Vim pelo site da loja. (Ref: **[Origem]**)".
 
 ## 6. Requisitos de Qualidade
-- **Async/Await no Webhook:** Garante que o script dispare o Webhook de forma assíncrona para não travar a experiência do usuário, mas tenta garantir que o redirecionamento para o WhatsApp só aconteça após o "OK" do disparo (ou use um pequeno setTimeout) para não perder o dado da planilha.
-- **Tratamento de Erros:** Se o Webhook falhar (por instabilidade da rede, por exemplo), programa o script para ainda assim abrir o WhatsApp. É melhor ter o lead apenas no WhatsApp do que perder a venda por um erro de servidor.
-- **Máscara de Telefone:** Incluir uma função simples de Regex para formatar o número enquanto o usuário digita. Isso evita que cheguem números incompletos na planilha.
+- **Async/Await no Webhook:** Garante que o script dispare o Webhook de forma assíncrona para não travar a experiência do usuário, mas tenta garantir que o redirecionamento para o WhatsApp só aconteça após o "OK" do disparo.
+- **Tratamento de Erros:** Se o Webhook falhar, programa o script para ainda assim abrir o WhatsApp.
+- **Máscara de Telefone:** Incluir uma função simples de Regex para formatar o número enquanto o usuário digita.

@@ -1,10 +1,9 @@
-export const GLOBAL_SUBJECTS = ['Duvida tecnica', 'Pedidos', 'Cadastro'];
-
 export const DEFAULT_CONFIG = {
   brandColor: '#25D366',
   textColor: '#1f2933',
   productSubjectValue: '__product__',
   productSubjectLabel: 'Sobre o produto',
+  subjects: ['Dúvida técnica', 'Pedidos', 'Cadastro', 'Outros'],
   phoneNumber: '',
   webhookUrl: '',
   webhookTimeoutMs: 3000,
@@ -24,9 +23,6 @@ export const DEFAULT_CONFIG = {
 export function createConfig(overrides = {}) {
   return {
     ...DEFAULT_CONFIG,
-    ...overrides,
-    subjects: Array.isArray(overrides.subjects) && overrides.subjects.length > 0
-      ? overrides.subjects
-      : GLOBAL_SUBJECTS
+    ...overrides
   };
 }

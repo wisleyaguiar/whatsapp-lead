@@ -187,6 +187,8 @@ redireciona mesmo com falha tratada.
   minutos apos o push para a branch `main`.
 - **SC-009**: O widget e servido via HTTPS com compressao Gzip/Brotli ativa pela borda
   da CDN.
+- **SC-010**: O widget deve renderizar dinamicamente a lista de assuntos provida na
+  inicializacao via parametro `subjects`.
 
 ## Assumptions
 
