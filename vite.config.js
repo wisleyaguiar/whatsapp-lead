@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  plugins: [],
   build: {
     lib: {
       entry: 'src/index.js',
@@ -11,7 +12,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
+          if (assetInfo.names && assetInfo.names.includes('style.css')) return 'whatsapp-widget.css';
           if (assetInfo.name === 'style.css') return 'whatsapp-widget.css';
+          // Fallback para o nome que o Cloudflare gerou no log anterior
+          if (assetInfo.name && assetInfo.name.includes('whatsapp-lead')) return 'whatsapp-widget.css';
           return assetInfo.name;
         }
       }
