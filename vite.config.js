@@ -5,12 +5,15 @@ export default defineConfig({
     lib: {
       entry: 'src/index.js',
       name: 'WhatsAppTrayLeadWidget',
-      formats: ['iife', 'es'],
-      fileName: (format) => `whatsapp-tray-lead-widget.${format}.js`
+      formats: ['iife'],
+      fileName: () => 'whatsapp-widget.js'
     },
     rollupOptions: {
       output: {
-        assetFileNames: 'whatsapp-tray-lead-widget.[ext]'
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'whatsapp-widget.css';
+          return assetInfo.name;
+        }
       }
     }
   }

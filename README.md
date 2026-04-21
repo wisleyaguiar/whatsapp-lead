@@ -1,4 +1,4 @@
-# WhatsApp Tray Lead Widget
+# WhatsApp Lead Widget
 
 Widget embutivel para qualificar visitantes da Tray antes de abrir o WhatsApp. Ele
 captura nome, telefone, assunto ou produto de interesse, aceite LGPD, origem de trafego,
@@ -37,7 +37,7 @@ Insira o gatilho no template de produto para enviar contexto estruturado via Twi
   data-product-name="{{ product.name }}"
   data-product-id="{{ product.id }}"
 >
-  Tenho uma duvida sobre esta joia
+  Comprar pelo WhatsApp
 </button>
 ```
 
