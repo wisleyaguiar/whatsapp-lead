@@ -1,9 +1,9 @@
 {
-  "name": "whatsapp-tray",
+  "name": "whatsapp-lead",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Widget de qualificacao de leads WhatsApp para lojas Tray.",
+  "description": "Widget de qualificacao de leads WhatsApp para e-commerces.",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
