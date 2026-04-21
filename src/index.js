@@ -9,8 +9,6 @@ export function initWhatsAppLeadWidget(options = {}, win = window) {
   return widget;
 }
 
-if (typeof window !== 'undefined') {
-  window.WhatsAppLeadWidget = {
-    init: (options = {}) => initWhatsAppLeadWidget(options, window)
-  };
-}
+// Exporta 'init' para que o Vite crie window.WhatsAppLeadWidget.init() no build IIFE
+export { initWhatsAppLeadWidget as init };
+
