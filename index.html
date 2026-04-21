@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Tray Lead Widget Demo</title>
+  </head>
+  <body>
+    <main style="min-height: 100vh; padding: 2rem; font-family: Arial, sans-serif;">
+      <h1>Loja demo</h1>
+      <p>Pagina de teste para o widget de qualificacao.</p>
+      <button
+        class="wpp-lead-product-trigger"
+        data-product-name="Anel de Diamante Vereda"
+        data-product-id="123"
+      >
+        Comprar pelo WhatsApp
+      </button>
+    </main>
+    <script type="module">
+      import { initWhatsAppLeadWidget } from './src/index.js';
+
+      window.__wppLeadSubmissions = [];
+      window.__wppLeadRedirects = [];
+      window.dataLayer = [];
+
+      initWhatsAppLeadWidget({
+        phoneNumber: '5511999999999',
+        webhookUrl: '/lead-webhook',
+        redirectMode: 'callback',
+        onRedirect: (url) => window.__wppLeadRedirects.push(url),
+        fetchImpl: async (url, options) => {
+          if (window.__wppLeadMode === 'timeout') {
+            await new Promise((resolve) => setTimeout(resolve, 20));
+            return { ok: false, status: 500 };
+          }
+          if (window.__wppLeadMode === 'error') {
+            return { ok: false, status: 500 };
+          }
+          window.__wppLeadSubmissions.push({ url, payload: JSON.parse(options.body) });
+          return { ok: true, status: 200 };
+        }
+      });
+    </script>
+  </body>
+</html>

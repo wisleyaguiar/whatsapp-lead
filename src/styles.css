@@ -1,0 +1,221 @@
+.wpp-lead-root {
+  --wpp-lead-color: #25d366;
+  --wpp-lead-text: #1f2933;
+  color: var(--wpp-lead-text);
+  font-family: Arial, Helvetica, sans-serif;
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2147483000;
+}
+
+.wpp-lead-button {
+  align-items: center;
+  background: var(--wpp-lead-color);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 20%);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  min-width: 60px;
+  padding: 0;
+  width: 60px;
+}
+
+.wpp-lead-button:focus-visible,
+.wpp-lead-submit:focus-visible,
+.wpp-lead-form input:focus-visible,
+.wpp-lead-form select:focus-visible {
+  outline: 3px solid #0b5fff;
+  outline-offset: 2px;
+}
+
+.wpp-lead-panel {
+  background: #ffffff;
+  border: 1px solid #d6dde4;
+  border-radius: 8px;
+  bottom: 72px;
+  box-shadow: 0 18px 50px rgb(0 0 0 / 24%);
+  max-width: min(360px, calc(100vw - 32px));
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: 340px;
+}
+
+.wpp-lead-root.is-open .wpp-lead-panel {
+  animation: wpp-lead-in 220ms ease-out;
+}
+
+.wpp-lead-root.is-open .wpp-lead-button-icon-whatsapp {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+.wpp-lead-root.is-open .wpp-lead-button-icon-close {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.wpp-lead-button-icon {
+  display: grid;
+  height: 28px;
+  place-items: center;
+  position: relative;
+  width: 28px;
+}
+
+.wpp-lead-button-icon svg {
+  inset: 0;
+  position: absolute;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.wpp-lead-button-icon-close {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+
+.wpp-lead-header {
+  background: var(--wpp-lead-color);
+  color: #fff;
+  padding: 16px 18px 14px;
+}
+
+.wpp-lead-header strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.wpp-lead-header p,
+.wpp-lead-product-question {
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 0 0 14px;
+}
+
+.wpp-lead-form {
+  display: grid;
+  gap: 12px;
+  padding: 16px 18px 18px;
+}
+
+.wpp-lead-form label {
+  display: grid;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 6px;
+}
+
+.wpp-lead-form input,
+.wpp-lead-form select {
+  border: 1px solid #a9b7c6;
+  border-radius: 8px;
+  color: #17212b;
+  font: inherit;
+  min-height: 0;
+  padding: 7px 10px;
+}
+
+.wpp-lead-form input:not([type="checkbox"]),
+.wpp-lead-form select {
+  height: 38px;
+}
+
+.wpp-lead-lgpd {
+  align-items: start;
+  display: grid;
+  font-weight: 400;
+  gap: 8px;
+  grid-template-columns: 18px 1fr;
+}
+
+.wpp-lead-lgpd input {
+  height: 18px;
+  min-height: 18px;
+  padding: 0;
+}
+
+.wpp-lead-product-question {
+  margin: 0;
+}
+
+.wpp-lead-product-bubble {
+  background: #e9f7ef;
+  border: 1px solid #c6ead3;
+  border-radius: 8px;
+  color: #123524;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1.45;
+  padding: 10px 12px;
+}
+
+.wpp-lead-product-bubble strong {
+  display: block;
+  font-size: 15px;
+  margin-top: 2px;
+}
+
+.wpp-lead-hp {
+  height: 0;
+  left: -10000px;
+  opacity: 0;
+  position: absolute;
+  width: 0;
+}
+
+.wpp-lead-errors {
+  color: #a32020;
+  font-size: 13px;
+  line-height: 1.4;
+  min-height: 18px;
+}
+
+.wpp-lead-submit {
+  background: var(--wpp-lead-color);
+  border: 0;
+  border-radius: 8px;
+  color: #062d18;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 10px 14px;
+}
+
+@keyframes wpp-lead-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 420px) {
+  .wpp-lead-root {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .wpp-lead-button {
+    margin-left: auto;
+  }
+
+  .wpp-lead-panel {
+    bottom: 68px;
+    max-width: none;
+    right: 0;
+    width: 100%;
+  }
+}
