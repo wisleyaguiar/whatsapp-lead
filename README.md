@@ -8,10 +8,10 @@ A maneira mais fácil de usar o widget é carregar os arquivos diretamente da CD
 
 ```html
 <!-- 1. Estilos do Widget -->
-<link rel="stylesheet" href="https://whatsapp-lead.pages.dev/whatsapp-widget.css">
+<link rel="stylesheet" href="https://whatsapp-lead.wisleyaguiar.workers.dev/whatsapp-widget.css">
 
 <!-- 2. Script do Widget -->
-<script src="https://whatsapp-lead.pages.dev/whatsapp-widget.js"></script>
+<script src="https://whatsapp-lead.wisleyaguiar.workers.dev/whatsapp-widget.js"></script>
 
 <!-- 3. Inicialização -->
 <script>

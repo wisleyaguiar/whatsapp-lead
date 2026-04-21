@@ -15,7 +15,7 @@ comercial garantido.
 **Language/Version**: JavaScript ES2020, HTML5, CSS3  
 **Primary Dependencies**: Vite 6, @cloudflare/vite-plugin, Wrangler (para deploy)
 **Deployment**: Cloudflare Pages (CI/CD via GitHub Push)
-**CDN URL**: `https://whatsapp-lead.pages.dev/`
+**CDN URL**: `https://whatsapp-lead.wisleyaguiar.workers.dev/`
 **Testing**: Vitest 2.0+ para unidade; Playwright para navegadores
 **Target Platform**: Navegadores desktop/mobile modernos  
 **Project Type**: Script frontend distribuido via CDN
