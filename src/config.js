@@ -1,9 +1,11 @@
+export const GLOBAL_SUBJECTS = ['Dúvida técnica', 'Pedidos', 'Cadastro', 'Outros'];
+
 export const DEFAULT_CONFIG = {
   brandColor: '#25D366',
   textColor: '#1f2933',
   productSubjectValue: '__product__',
   productSubjectLabel: 'Sobre o produto',
-  subjects: ['Dúvida técnica', 'Pedidos', 'Cadastro', 'Outros'],
+  subjects: GLOBAL_SUBJECTS,
   phoneNumber: '',
   webhookUrl: '',
   webhookTimeoutMs: 3000,
