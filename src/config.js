@@ -15,7 +15,7 @@ export const DEFAULT_CONFIG = {
   productTriggerSelector: '.wpp-lead-product-trigger',
   widgetRootId: 'wpp-lead-widget-root',
   honeypotName: 'company_url',
-  defaultOrigin: 'Site da loja',
+  defaultOrigin: 'Site',
   redirectMode: 'location',
   onRedirect: null,
   fetchImpl: null,

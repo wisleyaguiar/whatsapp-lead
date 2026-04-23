@@ -3,7 +3,7 @@ import { getLeadTopic } from './payload.js';
 
 export function buildWhatsappMessage(payload) {
   const topic = getLeadTopic(payload);
-  return `Ola! Me chamo ${payload.nome} e gostaria de atendimento sobre ${topic}. Podem me ajudar? Vim pelo site da loja. (Ref: ${payload.origem_trafego}).`;
+  return `Ola! Me chamo ${payload.nome} e gostaria de atendimento sobre ${topic}. Podem me ajudar? Vim pelo site. (Ref: ${payload.origem_trafego}).`;
 }
 
 export function buildWhatsappUrl(phoneNumber, payload) {

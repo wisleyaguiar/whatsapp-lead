@@ -13,7 +13,7 @@ export function buildLeadPayload(input) {
   const payload = {
     nome: String(input.name || '').trim(),
     whatsapp: normalizeWhatsapp(input.whatsapp),
-    origem_trafego: input.origin || 'Site da loja',
+    origem_trafego: input.origin || 'Site',
     url_origem: input.sourceUrl || '',
     data_hora: formatDateTime(input.date || new Date())
   };
