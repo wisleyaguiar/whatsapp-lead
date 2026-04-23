@@ -72,3 +72,7 @@ O projeto utiliza **Vite 6** e está configurado para deploy contínuo no **Clou
 - `npm run build`: Gera o bundle manualmente em `dist/`.
 - `npm test`: Executa todos os testes (Unit + Integration).
 - `npm run lint`: Verifica o estilo do código.
+
+## Tagueamento e Métricas com o Google Tag Manager
+
+O widget envia eventos para o Data Layer que podem ser consumidos pelo Google Tag Manager (GTM) para disparo de metas, eventos, remarketing e análises. Os eventos padrão são `wpp_qualificacao_inicio` quando a pessoa clica no botão e abre a janela do formulário e `wpp_qualificacao_concluida` quando a pessoa clica em enviar mensagem, mas os nomes podem ser personalizados via configuração. Use `openEventName` e `completeEventName` para configurar os nomes dos eventos na configuração do widget.
