@@ -7,11 +7,13 @@
   right: 18px;
   bottom: 18px;
   z-index: 2147483000;
+  pointer-events: none;
 }
 
 .wpp-lead-button {
   align-items: center;
   background: var(--wpp-lead-color);
+  pointer-events: auto;
   border: 0;
   border-radius: 999px;
   box-shadow: 0 10px 24px rgb(0 0 0 / 20%);
@@ -36,6 +38,7 @@
 .wpp-lead-panel {
   background: #ffffff;
   border: 1px solid #d6dde4;
+  pointer-events: auto;
   border-radius: 8px;
   bottom: 72px;
   box-shadow: 0 18px 50px rgb(0 0 0 / 24%);
