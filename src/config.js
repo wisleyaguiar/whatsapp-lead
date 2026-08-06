@@ -7,6 +7,7 @@ export const DEFAULT_CONFIG = {
   productSubjectLabel: 'Sobre o produto',
   subjects: GLOBAL_SUBJECTS,
   phoneNumber: '',
+  disableForm: false,
   webhookUrl: '',
   webhookTimeoutMs: 3000,
   openEventName: 'wpp_qualificacao_inicio',

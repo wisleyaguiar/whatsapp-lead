@@ -24,7 +24,7 @@ test('webhook error and timeout still redirect to WhatsApp', async ({ page }) =>
   await page.getByRole('button', { name: /abrir atendimento/i }).click();
   await page.locator('input[name="name"]').fill('Ana Lima');
   await page.locator('input[name="whatsapp"]').fill('11977776666');
-  await page.locator('select[name="subject"]').selectOption('Duvida tecnica');
+  await page.locator('select[name="subject"]').selectOption('Dúvida técnica');
   await page.locator('input[name="lgpd"]').check();
   await page.getByRole('button', { name: /enviar/i }).click();
 

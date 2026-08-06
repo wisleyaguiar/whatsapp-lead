@@ -3,6 +3,9 @@ import { getLeadTopic } from './payload.js';
 
 export function buildWhatsappMessage(payload) {
   const topic = getLeadTopic(payload);
+  if (!payload.nome) {
+    return topic ? `Ola! Gostaria de atendimento sobre ${topic}.` : 'Ola! Gostaria de atendimento.';
+  }
   return `Ola! Me chamo ${payload.nome} e gostaria de atendimento sobre ${topic}. Podem me ajudar? Vim pelo site. (Ref: ${payload.origem_trafego}).`;
 }
 

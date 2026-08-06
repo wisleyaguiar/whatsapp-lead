@@ -85,6 +85,20 @@ export class LeadWidget {
 
   open(context = createGlobalContext(this.win)) {
     this.context = context;
+    if (this.config.disableForm) {
+      pushGtmEvent(this.win, this.config.openEventName, this.getEventData());
+      const payload = buildLeadPayload({
+        origin: getTrafficOrigin(this.win, this.config.defaultOrigin),
+        sourceUrl: this.win.location?.href || '',
+        date: this.config.now(),
+        productContext: this.context?.type === 'produto' ? this.context : null
+      });
+      pushGtmEvent(this.win, this.config.completeEventName, this.getEventData(payload));
+      const url = buildWhatsappUrl(this.config.phoneNumber, payload);
+      this.redirect(url);
+      return;
+    }
+
     this.isOpen = true;
     this.panel.hidden = false;
     this.button.setAttribute('aria-label', 'Fechar atendimento pelo WhatsApp');
@@ -184,7 +198,7 @@ export class LeadWidget {
       return;
     }
 
-    this.win.location.href = url;
+    this.win.open(url, '_blank');
   }
 
   getEventData(payload = null) {
