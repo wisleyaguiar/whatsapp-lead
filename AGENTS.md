@@ -17,6 +17,10 @@ tests/
 
 npm test && npm run lint
 
+npm run dev
+
+npm run build
+
 ## Code Style
 
 JavaScript ES2020, HTML5, CSS3: Follow standard conventions

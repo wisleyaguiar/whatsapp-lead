@@ -3,6 +3,7 @@ dist/
 build/
 coverage/
 playwright-report/
+.playwright-mcp/
 test-results/
 *.log
 .env*
@@ -18,3 +19,4 @@ Thumbs.db
 .dev.vars*
 !.dev.vars.example
 !.env.example
+.github/

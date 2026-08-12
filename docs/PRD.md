@@ -1,5 +1,7 @@
 # 📄 PRD: Widget de Qualificação de Leads & Automação
 
+**Status:** Desatulizado
+
 ## 1. Visão Geral
 Desenvolver um script modular (JS/CSS/HTML) para a plataforma Tray que atue como um filtro de qualificação. O sistema deve capturar dados do visitante, identificar o contexto da navegação (produto atual) via Twig, enviar eventos de conversão para o GTM e persistir os dados em uma planilha externa via Webhook antes de redirecionar o usuário para o WhatsApp.
 

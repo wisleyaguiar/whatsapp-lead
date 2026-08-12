@@ -1,6 +1,0 @@
-- generic [ref=f4e1]:
-  - main [ref=f4e2]:
-    - heading "Loja demo" [level=1] [ref=f4e3]
-    - paragraph [ref=f4e4]: Pagina de teste para o widget de qualificacao.
-    - button "Comprar pelo WhatsApp" [ref=f4e5]
-  - button "Abrir atendimento pelo WhatsApp" [active] [ref=f4e6] [cursor=pointer]
