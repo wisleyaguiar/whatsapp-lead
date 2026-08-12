@@ -55,6 +55,7 @@ global com assunto manual. Ele nao tenta ler texto visual da pagina.
 - `openEventName`: nome do evento de abertura no dataLayer.
 - `completeEventName`: nome do evento de conclusao no dataLayer.
 - `productTriggerSelector`: seletor dos botoes/snippets de produto.
+- `fields`: (Array de strings) Campos extras a exibir no formulário, entre WhatsApp e Assunto. Identificadores disponíveis: `cnpj`, `razaoSocial`, `email` (`name` e `whatsapp` já são sempre exibidos e não devem ser incluídos aqui). Prefixe um identificador com `"*"` (ex.: `"*cnpj"`) para torná-lo obrigatório; sem o prefixo, o campo é opcional. Padrão: `[]`.
 
 ## Desenvolvimento e Deploy
 

@@ -71,13 +71,13 @@ Antes de implementar, leia:
 1. `.spec/features/lead-form-configurable-fields/SPEC.md` — requisitos RIGID que esta fase cobre
 2. `.spec/features/lead-form-configurable-fields/PLAN.md` — decomposição completa, dependências e riscos
 
-- [ ] T08 — Suíte de integração ponta-a-ponta para `config.fields`
+- [x] T08 — Suíte de integração ponta-a-ponta para `config.fields`
       Arquivos: `tests/integration/configurable-fields.spec.js`
       Mudança: Casos Playwright: default sem `?fields=` só Nome/WhatsApp; `?fields=email,cnpj` ordem Email antes de CNPJ após WhatsApp; `?fields=email,whatsapp,cnpj` WhatsApp fixo na 2ª posição; `?fields=*email` vazio bloqueia submit (sem rede/redirect); `?fields=cnpj` vazio sem `*` permite submit; `?fields=cnpj,email` preenchidos aparecem no payload capturado, `razao_social` ausente; rótulos "CNPJ"/"Razão Social"/"E-mail" visíveis envolvendo os inputs.
       Cobre: RF-01, RF-02, RF-03, RF-04, RF-05, RF-06, RF-07, RF-08, RF-09, RF-10, RF-11, UI-01, UI-02
       Acceptance criteria: todos os 7 casos Playwright acima passam (`npx playwright test tests/integration/configurable-fields.spec.js`).
       Testes: este arquivo é o teste.
-- [ ] T09 — Documentação do novo config em `README.md`
+- [x] T09 — Documentação do novo config em `README.md`
       Arquivos: `README.md`
       Mudança: Adicionar entrada em `## Configuracoes` documentando `fields: string[]` — sintaxe, prefixo `"*"`, identificadores disponíveis (`cnpj`, `razaoSocial`, `email`; `name`/`whatsapp` sempre presentes), default `[]`.
       Cobre: CT-01 (documentação)
