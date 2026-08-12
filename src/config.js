@@ -8,6 +8,7 @@ export const DEFAULT_CONFIG = {
   subjects: GLOBAL_SUBJECTS,
   phoneNumber: '',
   disableForm: false,
+  fields: [],
   webhookUrl: '',
   webhookTimeoutMs: 3000,
   openEventName: 'wpp_qualificacao_inicio',

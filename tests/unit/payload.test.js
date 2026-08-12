@@ -58,4 +58,37 @@ describe('payload helpers', () => {
     expect(buildWhatsappMessage(payload)).toContain('Ola! Me chamo Joao Silva');
     expect(buildWhatsappMessage(payload)).toContain('atendimento sobre Cadastro');
   });
+
+  it('adds configured field keys to the payload', () => {
+    const payload = buildLeadPayload({
+      name: 'Joao Silva',
+      whatsapp: '11999999999',
+      subject: 'Cadastro',
+      origin: 'Site',
+      sourceUrl: 'https://loja.test',
+      date,
+      fields: [{ id: 'cnpj' }, { id: 'email' }],
+      cnpj: 'x',
+      email: 'y'
+    });
+
+    expect(payload.cnpj).toBe('x');
+    expect(payload.email).toBe('y');
+    expect(payload.razao_social).toBeUndefined();
+  });
+
+  it('adds no extra keys when fields is empty or omitted', () => {
+    const payload = buildLeadPayload({
+      name: 'Joao Silva',
+      whatsapp: '11999999999',
+      subject: 'Cadastro',
+      origin: 'Site',
+      sourceUrl: 'https://loja.test',
+      date
+    });
+
+    expect(payload.cnpj).toBeUndefined();
+    expect(payload.razao_social).toBeUndefined();
+    expect(payload.email).toBeUndefined();
+  });
 });

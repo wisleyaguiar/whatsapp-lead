@@ -2,6 +2,7 @@ import { formatPhoneForDisplay } from '../core/phone.js';
 import { createGlobalContext, getTrafficOrigin, readProductContext } from '../core/context.js';
 import { validateLeadForm } from '../core/validation.js';
 import { buildLeadPayload } from '../core/payload.js';
+import { resolveFields } from '../core/fields.js';
 import { buildWhatsappUrl } from '../core/whatsapp.js';
 import { pushGtmEvent } from '../integrations/gtm.js';
 import { postLead, REGISTRATION_STATUS } from '../integrations/webhook.js';
@@ -147,7 +148,7 @@ export class LeadWidget {
   }
 
   collectValues() {
-    return {
+    const values = {
       name: this.getField('name').value,
       whatsapp: this.getField('whatsapp').value,
       subject: this.getField('subject').value,
@@ -155,11 +156,18 @@ export class LeadWidget {
       honeypot: this.getField(this.config.honeypotName)?.value || '',
       productContext: this.context?.type === 'produto' ? this.context : null
     };
+
+    for (const { id } of resolveFields(this.config.fields)) {
+      values[id] = this.getField(id)?.value || '';
+    }
+
+    return values;
   }
 
   async submit() {
     const values = this.collectValues();
-    const validation = validateLeadForm(values, { subjects: this.config.subjects });
+    const fields = resolveFields(this.config.fields);
+    const validation = validateLeadForm(values, { subjects: this.config.subjects, fields });
 
     if (validation.bot) {
       this.showErrors(['Envio bloqueado.']);
@@ -174,6 +182,7 @@ export class LeadWidget {
     this.showStatus('Enviando seus dados...');
     const payload = buildLeadPayload({
       ...values,
+      fields,
       origin: getTrafficOrigin(this.win, this.config.defaultOrigin),
       sourceUrl: this.win.location?.href || '',
       date: this.config.now()

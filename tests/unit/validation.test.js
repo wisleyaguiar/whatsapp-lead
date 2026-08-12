@@ -36,4 +36,26 @@ describe('lead validation', () => {
     expect(result.bot).toBe(true);
     expect(result.valid).toBe(false);
   });
+
+  it('requires configured fields marked as required when empty', () => {
+    const result = validateLeadForm(
+      { ...validValues, cnpj: '   ' },
+      { fields: [{ id: 'cnpj', required: true }] }
+    );
+    expect(result.valid).toBe(false);
+    expect(result.errors.cnpj).toBeTruthy();
+  });
+
+  it('does not require configured fields marked as optional', () => {
+    const result = validateLeadForm(
+      { ...validValues, cnpj: '' },
+      { fields: [{ id: 'cnpj', required: false }] }
+    );
+    expect(result.valid).toBe(true);
+    expect(result.errors.cnpj).toBeUndefined();
+  });
+
+  it('preserves current behavior when fields is not passed', () => {
+    expect(validateLeadForm(validValues).valid).toBe(true);
+  });
 });

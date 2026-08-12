@@ -1,5 +1,6 @@
 import { isValidBrazilianWhatsapp } from './phone.js';
 import { isValidSubject } from './context.js';
+import { FIELD_DEFINITIONS } from './fields.js';
 
 export function validateName(name = '') {
   const parts = String(name).trim().split(/\s+/).filter(Boolean);
@@ -33,6 +34,12 @@ export function validateLeadForm(values, options = {}) {
 
   if (!values.productContext && !isValidSubject(values.subject, subjects)) {
     errors.subject = 'Selecione um assunto de atendimento.';
+  }
+
+  for (const field of options.fields || []) {
+    if (field.required && !String(values[field.id] || '').trim()) {
+      errors[field.id] = FIELD_DEFINITIONS[field.id].errorMessage;
+    }
   }
 
   return {

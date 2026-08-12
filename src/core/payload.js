@@ -1,4 +1,5 @@
 import { normalizeWhatsapp } from './phone.js';
+import { FIELD_DEFINITIONS } from './fields.js';
 
 export function formatDateTime(date = new Date()) {
   const pad = (value) => String(value).padStart(2, '0');
@@ -23,6 +24,10 @@ export function buildLeadPayload(input) {
     payload.produto_id = input.productContext.productId;
   } else {
     payload.assunto = input.subject;
+  }
+
+  for (const field of input.fields || []) {
+    payload[FIELD_DEFINITIONS[field.id].payloadKey] = String(input[field.id] || '').trim();
   }
 
   return payload;

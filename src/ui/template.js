@@ -1,3 +1,5 @@
+import { FIELD_DEFINITIONS, resolveFields } from '../core/fields.js';
+
 export function createElementFromHtml(html, doc = document) {
   const template = doc.createElement('template');
   template.innerHTML = html.trim();
@@ -7,6 +9,17 @@ export function createElementFromHtml(html, doc = document) {
 export function getWidgetMarkup(config) {
   const subjects = config.subjects
     .map((subject) => `<option value="${subject}">${subject}</option>`)
+    .join('');
+
+  const extraFields = resolveFields(config.fields)
+    .map(({ id, required }) => {
+      const { label } = FIELD_DEFINITIONS[id];
+      return `
+        <label>
+          ${label}
+          <input name="${id}" ${required ? 'required' : ''} />
+        </label>`;
+    })
     .join('');
 
   return `
@@ -36,6 +49,7 @@ export function getWidgetMarkup(config) {
           WhatsApp
           <input name="whatsapp" inputmode="tel" autocomplete="tel" required />
         </label>
+        ${extraFields}
         <label data-role="subject-field">
           Assunto
           <select name="subject" required>
