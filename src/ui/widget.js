@@ -95,7 +95,7 @@ export class LeadWidget {
         productContext: this.context?.type === 'produto' ? this.context : null
       });
       pushGtmEvent(this.win, this.config.completeEventName, this.getEventData(payload));
-      const url = buildWhatsappUrl(this.config.phoneNumber, payload);
+      const url = buildWhatsappUrl(this.config.phoneNumber, payload, this.config);
       this.redirect(url);
       return;
     }
@@ -194,7 +194,7 @@ export class LeadWidget {
     });
 
     pushGtmEvent(this.win, this.config.completeEventName, this.getEventData(payload));
-    const url = buildWhatsappUrl(this.config.phoneNumber, payload);
+    const url = buildWhatsappUrl(this.config.phoneNumber, payload, this.config);
     this.redirect(url);
     this.showStatus(registration.ok ? 'Abrindo WhatsApp...' : 'Abrindo WhatsApp mesmo assim...');
 

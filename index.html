@@ -30,7 +30,6 @@
       initWhatsAppLeadWidget({
         phoneNumber: '5511999999999',
         webhookUrl: '/lead-webhook',
-        fields:['*razaoSocial','*cnpj'],
         redirectMode: 'callback',
         ...(fieldsParam ? { fields: fieldsParam.split(',') } : {}),
         onRedirect: (url) => window.__wppLeadRedirects.push(url),
