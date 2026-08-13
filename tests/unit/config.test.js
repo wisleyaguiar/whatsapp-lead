@@ -11,3 +11,14 @@ describe('config fields default', () => {
     expect(createConfig({ fields: ['*cnpj'] }).fields).toEqual(['*cnpj']);
   });
 });
+
+describe('config messageTemplate default', () => {
+  it('defaults messageTemplate to null', () => {
+    expect(DEFAULT_CONFIG.messageTemplate).toBeNull();
+    expect(createConfig().messageTemplate).toBeNull();
+  });
+
+  it('reflects overrides', () => {
+    expect(createConfig({ messageTemplate: 'x' }).messageTemplate).toBe('x');
+  });
+});

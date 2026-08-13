@@ -9,6 +9,7 @@ export const DEFAULT_CONFIG = {
   phoneNumber: '',
   disableForm: false,
   fields: [],
+  messageTemplate: null,
   webhookUrl: '',
   webhookTimeoutMs: 3000,
   openEventName: 'wpp_qualificacao_inicio',
