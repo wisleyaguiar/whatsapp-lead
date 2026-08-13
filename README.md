@@ -56,6 +56,15 @@ global com assunto manual. Ele nao tenta ler texto visual da pagina.
 - `completeEventName`: nome do evento de conclusao no dataLayer.
 - `productTriggerSelector`: seletor dos botoes/snippets de produto.
 - `fields`: (Array de strings) Campos extras a exibir no formulário, entre WhatsApp e Assunto. Identificadores disponíveis: `cnpj`, `razaoSocial`, `email` (`name` e `whatsapp` já são sempre exibidos e não devem ser incluídos aqui). Prefixe um identificador com `"*"` (ex.: `"*cnpj"`) para torná-lo obrigatório; sem o prefixo, o campo é opcional. Padrão: `[]`.
+- `messageTemplate`: (String, opcional) Template customizado da mensagem enviada ao WhatsApp. Se ausente, vazio (após `.trim()`) ou de tipo diferente de string, o widget usa a mensagem padrão embutida. Placeholders no formato `{campo}` são substituídos pelo valor correspondente do payload do lead; um placeholder sem valor no payload vira string vazia (nunca lança erro nem deixa `{campo}` literal na mensagem). Placeholders disponíveis: `{nome}`, `{whatsapp}`, `{origem_trafego}`, `{url_origem}`, `{data_hora}`, `{assunto}`, `{produto_interesse}`, `{produto_id}`, `{topico}` (resolve para `produto_interesse` ou `assunto`, o que estiver preenchido), `{cnpj}`, `{razao_social}`, `{email}`.
+
+  ```js
+  // Template customizado
+  { messageTemplate: 'Ola {nome}, tenho interesse em {topico}. Meu CNPJ: {cnpj}' }
+
+  // Sem messageTemplate (ou vazio/tipo inválido) -> usa o fallback padrão:
+  // "Ola! Me chamo {nome} e gostaria de atendimento sobre {topico}. Podem me ajudar? Vim pelo site. (Ref: {origem_trafego})."
+  ```
 
 ## Desenvolvimento e Deploy
 
