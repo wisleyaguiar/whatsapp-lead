@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: whatsapp-lead static asset delivery (charset contract)
+  version: "1.0.0"
+  description: >-
+    Contrato de header de resposta HTTP para os assets estáticos do widget
+    (whatsapp-widget.js / whatsapp-widget.css) servidos pelo Cloudflare
+    Workers/Pages. Não é uma API de negócio — documenta apenas CT-02
+    (charset=utf-8 obrigatório no Content-Type), traceável a RF-06, RF-07
+    e RNF-03. Domínio de deploy verified at README.md:11-14.
+servers:
+  - url: https://whatsapp-lead.wisleyaguiar.workers.dev
+    description: Deploy de produção (Cloudflare Workers/Pages)
+paths:
+  /whatsapp-widget.js:
+    get:
+      operationId: getWidgetScript
+      summary: Bundle IIFE do widget (RF-06, RF-07)
+      description: >-
+        Servido como asset estático (build via `vite build`, `src/index.js`
+        → `whatsapp-widget.js`). Response Content-Type DEVE declarar
+        charset=utf-8, independentemente do charset da página hospedeira
+        que referencia o script via tag `<script>` clássica (RF-07: a
+        correção não pode depender do host).
+      responses:
+        "200":
+          description: Bundle JavaScript do widget, codificado em UTF-8 pelo Vite.
+          headers:
+            Content-Type:
+              required: true
+              schema:
+                type: string
+                pattern: '^text/javascript;\s*charset=utf-8$'
+                example: "text/javascript; charset=utf-8"
+          content:
+            text/javascript:
+              schema:
+                type: string
+                description: Conteúdo do bundle IIFE minificado (não é JSON).
+  /whatsapp-widget.css:
+    get:
+      operationId: getWidgetStylesheet
+      summary: Folha de estilos do widget (RF-06, RF-07)
+      description: >-
+        Servido como asset estático (build via `vite build`,
+        `src/styles.css` → `whatsapp-widget.css`). Response Content-Type
+        DEVE declarar charset=utf-8, mesma regra de RF-06/RF-07 aplicada
+        ao script.
+      responses:
+        "200":
+          description: Folha de estilos do widget, codificada em UTF-8 pelo Vite.
+          headers:
+            Content-Type:
+              required: true
+              schema:
+                type: string
+                pattern: '^text/css;\s*charset=utf-8$'
+                example: "text/css; charset=utf-8"
+          content:
+            text/css:
+              schema:
+                type: string
+                description: Conteúdo CSS do widget (não é JSON).
